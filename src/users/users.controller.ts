@@ -12,7 +12,7 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get('all')
+  @Get('all') // i will put Guard so only admin can view that
   findAll() {
     return this.usersService.findAll();
   }
