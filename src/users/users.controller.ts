@@ -7,27 +7,27 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('create')
+  @Post('create') // admin creates but anyone can register
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
-  @Get('all') // i will put Guard so only admin can view that
+  @Get('all') // admin can use it only
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get('one')
+  @Get('one') // admin can do it again
   findOne(@Body('id') id: string) {
     return this.usersService.findOne(+id);
   }
 
-  @Post('update')
+  @Post('update') // both admin and user can update info
   update(@Body('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
 
-  @Post('remove')
+  @Post('remove') // admin can easily and user if he sure)
   remove(@Body('id') id: string) {
     return this.usersService.remove(+id);
   }
